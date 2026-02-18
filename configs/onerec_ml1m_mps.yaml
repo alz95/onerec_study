@@ -1,0 +1,36 @@
+seed: 42
+
+model:
+  num_users: 300
+  num_items: 4000
+  embedding_dim: 64
+  hidden_dim: 64
+  max_seq_len: 20
+
+train:
+  epochs: 3
+  batch_size: 512
+  learning_rate: 0.001
+  weight_decay: 0.0
+  num_train_samples: 20000
+  num_val_users: 512
+  negatives_per_user: 100
+  sample_mode: full
+  log_interval: 50
+  profile: true
+  # Use all-item evaluation with seen-item filtering
+  eval_mode: all
+
+metrics:
+  topk: [10, 20]
+
+data:
+  source: ml1m
+  ml1m_raw_dir: /Users/bytedance/code/research/onerec_study/data/raw/ml-1m/ml-1m
+  rating_threshold: 4
+
+loader:
+  num_workers: 6
+  persistent_workers: true
+  prefetch_factor: 4
+  pin_memory: false

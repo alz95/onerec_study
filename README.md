@@ -24,6 +24,7 @@ python train.py --config configs/onerec_2502_minimal.yaml
 
 - `configs/` - experiment configs
 - `docs/` - structured reproduction specification
+- `docs/results/` - experiment result reports
 - `onerec/` - package modules
   - `data/` - dataset and dataloader helpers
   - `models/` - model definitions
@@ -36,6 +37,15 @@ python train.py --config configs/onerec_2502_minimal.yaml
 2. Replace synthetic dataset path with real benchmark pipeline.
 3. Add paper-specific model blocks and losses as ablations.
 4. Run multi-seed experiments and compare against reported metrics.
+
+## Results
+- ML-1M (full, all-item eval, MPS): [2026-02-18-ml1m](docs/results/2026-02-18-ml1m.md)
+
+## Dashboard
+- Start the dashboard server:
+  - `. .venv/bin/activate`
+  - `python dashboard.py`
+- Open http://localhost:8765/ to view loss/time/Recall@K/NDCG@K
 
 
 ## Dataset download links
