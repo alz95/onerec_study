@@ -1,0 +1,20 @@
+seed: 42
+
+model:
+  num_users: 300
+  num_items: 1200
+  embedding_dim: 64
+  hidden_dim: 64
+  max_seq_len: 20
+
+train:
+  epochs: 3
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0
+  num_train_samples: 4000
+  num_val_users: 256
+  negatives_per_user: 100
+
+metrics:
+  topk: [10, 20]
