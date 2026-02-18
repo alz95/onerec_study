@@ -1,0 +1,44 @@
+seed: 42
+
+model:
+  # for ml1m mode, num_items will be inferred from ratings.dat
+  num_users: 300
+  num_items: 1200
+  max_seq_len: 50
+
+  # OpenOneRec-like encoder-decoder settings
+  embedding_dim: 128
+  hidden_dim: 128
+  n_heads: 4
+  num_decoder_layers: 2
+  ffn_dim: 256
+  num_experts: 4
+  dropout: 0.1
+
+train:
+  # options: synthetic | ml1m
+  dataset_type: ml1m
+  ratings_path: data/raw/ml-1m/ratings.dat
+
+  # options: generative_ce | bpr | dpo
+  objective: generative_ce
+  dpo_beta: 0.1
+  bos_token: 1
+
+  epochs: 10
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.01
+
+  # eval options: sampled | all
+  eval_mode: sampled
+  filter_seen_in_eval: true
+
+  # synthetic-only
+  num_train_samples: 4000
+  num_val_users: 256
+
+  negatives_per_user: 100
+
+metrics:
+  topk: [10, 20]
